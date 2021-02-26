@@ -10,28 +10,15 @@ namespace Monpl.Utils
         {
             return (isFirstMinus ? -1 : 1) * ((targetSize / 2) + (targetMargin / 2)) * Mathf.Max(totalCnt - 1, 0);
         }
+
         public static float GetDividePos(float targetSize, float targetMargin, int totalCnt, int curIdx, bool isFirstMinus = true)
         {
             var first = (isFirstMinus ? -1 : 1) * ((targetSize / 2) + (targetMargin / 2)) * (totalCnt - 1);
-            
-//            if(isFirstMinus == false)
-                first += (targetSize + targetMargin) * curIdx * (isFirstMinus ? 1 : -1);
-//            else
-//                first += (targetSize + targetMargin) * curIdx;
-            
+            first += (targetSize + targetMargin) * curIdx * (isFirstMinus ? 1 : -1);
+
             return first;
         }
-        
-        
-        
-//        public static float GetBoardLocalPos(int cellIndexPos, float targetSize, float targetMargin,
-//            int totalSize)
-//        {
-//            var retX = GetDivideStartPos(targetSize, targetMargin, totalSize) +
-//                       (targetSize + targetMargin) * cellIndexPos;
-//
-//            return retX;
-//        }
+
         public static Vector2 GetBoardLocalPos(Vector2Int cellIndexPos, Vector2 targetSize, Vector2 targetMargin,
             Vector2Int boardSize)
         {
@@ -105,6 +92,19 @@ namespace Monpl.Utils
             }
             
             return UnityEngine.Random.Range(min, max) * (UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1);
+        }
+        
+        // Double Util
+        public static double Truncate(double d, int digit)
+        {
+            double pow = Math.Pow(10, digit);
+            return Math.Truncate(d * pow) / pow;
+        }
+
+        public static double Ceiling(double d, int digit)
+        {
+            double pow = Math.Pow(10, digit);
+            return Math.Ceiling(d * pow) / pow;
         }
     }
 }
