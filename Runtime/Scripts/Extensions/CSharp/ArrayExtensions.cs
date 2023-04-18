@@ -11,7 +11,7 @@ namespace Monpl.Utils.Extensions
 
         public static T GetLast<T>(this T[] arr)
         {
-            return arr[arr.Length - 1];
+            return arr[^1];
         }
     }
 }
